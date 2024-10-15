@@ -1,6 +1,6 @@
 # Contributing to Hacktoberfest24
 
-We welcome all contributions! To ensure a smooth process, please follow these guidelines:
+We welcome all contributions! To ensure a smooth process, please follow these guidelines:-
 
 ## Code Style
 - Follow consistent naming conventions.
