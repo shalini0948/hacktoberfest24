@@ -98,7 +98,7 @@ If you're new to contributing to open source, here’s a quick guide to help you
 ---
 
 ## 🌟 Guide for adding WebDev Projects
-Also add your project name and small description in the same format as other files in the array ProjectFiles. See from line no 61 in index.html file.
+Also add your project name and small description in the same format as other files in the array ProjectFiles. See from line no 74 in index.html file.
 
 ## 🌟 Code of Conduct
 
