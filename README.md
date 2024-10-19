@@ -67,6 +67,22 @@ We encourage everyone to get involved! Whether it’s fixing bugs, improving doc
 🎉 **That's it!** Now just wait for your PR to be reviewed. We'll get back to you as soon as possible!
 
 ---
+## To update your branch from the main branch ( optional ):
+1. **Fetch the Latest Changes from Upstream**
+  Fetch the latest changes from the upstream main branch:
+    ```bash
+    git fetch upstream
+    ```
+  This will get any new commits from the upstream repository but won't apply them to your branch yet.
+
+2. **Merge Changes from Upstream's main into Your Current Branch**
+Now, merge the fetched changes from the upstream main branch into your current branch :
+    ```bash
+    git merge upstream/main
+    ```
+    This will merge the latest changes from the upstream main into your branch. If there are no conflicts, the merge will happen automatically.
+
+3. **Resolve Merge Conflicts (if any)**:
 
 ## 📖 Getting Started
 
@@ -75,6 +91,7 @@ If you're new to contributing to open source, here’s a quick guide to help you
 1. **Explore the Codebase**: Familiarize yourself with the structure and components.
 2. **Find an Issue**: Look through the Issues section and pick one labeled `good first issue` if you're new to contributing.
 3. **Ask Questions**: Feel free to open an issue for any questions or discussions.
+4. **Where to add**: Add your code in respective folders.
 
 ---
 
