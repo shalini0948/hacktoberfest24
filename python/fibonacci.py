@@ -4,7 +4,8 @@ def generate_fibonacci(n_terms):
     
     for _ in range(n_terms):
         fibonacci_sequence.append(a)
-        a, b = b, a + b  # Update values for the next iteration
+        a, b = b, a + b  
+
     
     return fibonacci_sequence
 
