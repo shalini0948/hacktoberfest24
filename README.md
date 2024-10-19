@@ -50,15 +50,18 @@ We encourage everyone to get involved! Whether it’s fixing bugs, improving doc
     git checkout -b johndoe/awesome-feature
     ```
 4. **Make Changes**: Improve the project by adding features, fixing bugs, or improving the documentation.
-5. **Commit Your Changes**:
+5. **Add Changes** : ```bash
+    git add ."
+    ```
+6. **Commit Your Changes**:
     ```bash
     git commit -m "Add johndoe's awesome feature"
     ```
-6. **Push to Your Branch**:
+7. **Push to Your Branch**:
     ```bash
     git push origin your-username/feature-name
     ```
-7. **Submit a Pull Request**: Go to your fork on GitHub and click the "New Pull Request" button. 
+8. **Submit a Pull Request**: Go to your fork on GitHub and click the "New Pull Request" button. 
    
 🎉 **That's it!** Now just wait for your PR to be reviewed. We'll get back to you as soon as possible!
 
