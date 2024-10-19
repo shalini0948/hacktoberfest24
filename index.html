@@ -165,7 +165,7 @@
 
     // Function to show popup with Python file content
     function showPopup(file) {
-      fetch(`Python/${file}`)
+      fetch(`python/${file}`)
         .then(response => response.text())
         .then(data => {
           document.getElementById('python-code').textContent = data;
