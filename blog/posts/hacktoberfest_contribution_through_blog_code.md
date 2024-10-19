@@ -1,0 +1,1 @@
+Hacktoberfest contribution - this code can create a new blog post, and you can also add comments on existing first post. I have created a base for this project. Feel free to add more to this opensource project. Style the UI and add more routes and more functionalities. Contribute here. Thanks!!
