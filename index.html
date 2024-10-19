@@ -10,6 +10,34 @@
     body {
       font-family: 'Inter', sans-serif;
     }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh; /* Limit height */
+      overflow-y: auto; /* Enable scrolling */
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -51,9 +79,14 @@
 
   <!-- Projects Section -->
   <main class="container mx-auto px-6 py-8" id="projects">
-    <h2 class="text-3xl font-semibold mb-6 text-center">Contributors' Projects</h2>
+    <h2 class="text-3xl font-semibold mb-6 text-center">WebDev Projects</h2>
     <div id="project-list" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Projects will be inserted here by JavaScript -->
+      <!-- HTML Projects will be inserted here by JavaScript -->
+    </div>
+
+    <h2 class="text-3xl font-semibold mb-6 text-center mt-10">Python Projects</h2>
+    <div id="python-list" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Python Projects will be inserted here by JavaScript -->
     </div>
   </main>
 
@@ -69,6 +102,14 @@
     </div>
   </footer>
 
+  <!-- Popup for Python File Content -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" id="close-popup">&times;</span>
+      <pre id="python-code" class="whitespace-pre-wrap text-sm text-gray-800"></pre>
+    </div>
+  </div>
+
   <script>
     // List of HTML files in the WebDev folder
     const projectFiles = [
@@ -78,7 +119,21 @@
       // More projects can be added here as needed
     ];
 
-    // Dynamically add project cards
+    // List of Python files in the Python folder
+    const pythonFiles = [
+      { name: "Perfect Number Range", file: "Perfect-num-range.py", description: "A tool to find perfect numbers in a given range." },
+      { name: "Primes in Range", file: "Primes-in-range.py", description: "Finds all prime numbers in a given range." },
+      { name: "BMI Calculator", file: "bmiCalculator.py", description: "A simple BMI Calculator." },
+      { name: "Check Prime", file: "checkPrime.py", description: "Checks if a number is prime." },
+      { name: "Decimal to Roman", file: "decimal2Roman.py", description: "Converts decimal numbers to Roman numerals." },
+      { name: "Even or Odd", file: "evenOrOdd.py", description: "Checks if a number is even or odd." },
+      { name: "Fibonacci", file: "fibonacci.py", description: "Generates Fibonacci series." },
+      { name: "Reverse Array", file: "reverse_array.py", description: "Reverses an array." },
+      { name: "Roman to Decimal", file: "roman2decimal.py", description: "Converts Roman numerals to decimal." },
+      { name: "Simple Calculator", file: "simple-calculator.py", description: "A simple calculator for basic arithmetic." },
+    ];
+
+    // Dynamically add HTML project cards
     const projectList = document.getElementById('project-list');
     projectFiles.forEach(project => {
       const projectCard = `
@@ -91,6 +146,41 @@
         </div>
       `;
       projectList.innerHTML += projectCard;
+    });
+
+    // Dynamically add Python project cards
+    const pythonList = document.getElementById('python-list');
+    pythonFiles.forEach(file => {
+      const pythonCard = `
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <h3 class="text-xl font-bold">${file.name}</h3>
+          <p class="text-gray-600 mt-2">${file.description}</p>
+          <button class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-400 transition" onclick="showPopup('${file.file}')">
+            View Code
+          </button>
+        </div>
+      `;
+      pythonList.innerHTML += pythonCard;
+    });
+
+    // Function to show popup with Python file content
+    function showPopup(file) {
+      fetch(`Python/${file}`)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('python-code').textContent = data;
+          document.getElementById('popup').style.display = 'flex';
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        })
+        .catch(error => {
+          console.error('Error fetching the file:', error);
+        });
+    }
+
+    // Close popup functionality
+    document.getElementById('close-popup').addEventListener('click', () => {
+      document.getElementById('popup').style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable background scrolling
     });
 
     // Mobile menu toggle functionality
