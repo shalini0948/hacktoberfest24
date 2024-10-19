@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Advanced Age Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-500 to-purple-600 min-h-screen flex items-center justify-center">
+  
+  <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+    <h1 class="text-3xl font-bold text-gray-800 text-center mb-6">Age Calculator</h1>
+    
+    <!-- Form -->
+    <div>
+      <label for="birthdate" class="block text-gray-700 font-semibold mb-2">Select Your Birthdate</label>
+      <input id="birthdate" type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4" />
+      <button id="calculate" class="bg-purple-600 text-white w-full py-2 rounded-lg font-semibold hover:bg-purple-700 focus:ring-4 focus:ring-purple-400 transition duration-200">Calculate Age</button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result" class="mt-6 p-4 bg-purple-100 text-purple-800 font-semibold rounded-lg hidden">
+      <p id="ageResult" class="text-center text-xl"></p>
+    </div>
+  </div>
+
+  <script>
+    // Function to calculate age
+    function calculateAge(birthDate) {
+      const today = new Date();
+      const birth = new Date(birthDate);
+
+      let years = today.getFullYear() - birth.getFullYear();
+      let months = today.getMonth() - birth.getMonth();
+      let days = today.getDate() - birth.getDate();
+
+      if (days < 0) {
+        months--;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      return { years, months, days };
+    }
+
+    // Event listener for the button
+    document.getElementById('calculate').addEventListener('click', function() {
+      const birthdate = document.getElementById('birthdate').value;
+      
+      if (birthdate) {
+        const age = calculateAge(birthdate);
+
+        // Display result
+        document.getElementById('ageResult').textContent = `You are ${age.years} years, ${age.months} months, and ${age.days} days old.`;
+        document.getElementById('result').classList.remove('hidden');
+      } else {
+        alert("Please select your birthdate!");
+      }
+    });
+  </script>
+</body>
+</html>
