@@ -2,6 +2,8 @@
 
 Welcome to **Hacktoberfest24**'s official open-source repository! 👋 We're thrilled to have you here. Whether you're an experienced developer or just starting your open-source journey, this repo is the perfect place to collaborate, innovate, and create something amazing together!
 
+Explore our projects and contributions on our [GitHub Pages site](https://sestopus.github.io/hacktoberfest24/)!
+
 Join us in contributing to projects, learning new skills, and making a difference in the tech community. Let's build something great! 💻🎉
 
 ## 🚀 Project Overview
