@@ -18,12 +18,25 @@
   <header class="bg-blue-600 text-white py-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center px-6">
       <h1 class="text-2xl font-bold">Hacktoberfest24</h1>
-      <nav>
-        <a href="#projects" class="text-white hover:underline mx-4">Projects</a>
-        <a href="about.html" class="text-white hover:underline mx-4">About</a>
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <nav id="nav-menu" class="hidden md:flex space-x-4">
+        <a href="#projects" class="text-white hover:underline">Projects</a>
+        <a href="about.html" class="text-white hover:underline">About</a>
       </nav>
     </div>
   </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <nav class="flex flex-col items-center bg-blue-600 text-white rounded-lg mt-4">
+      <a href="#projects" class="block py-2 w-full text-center hover:bg-blue-500">Projects</a>
+      <a href="about.html" class="block py-2 w-full text-center hover:bg-blue-500">About</a>
+    </nav>
+  </div>
 
   <!-- Hero Section -->
   <section class="bg-blue-500 text-white py-12">
@@ -57,12 +70,12 @@
   </footer>
 
   <script>
-    // Manually defined list of HTML files in the WebDev folder
+    // List of HTML files in the WebDev folder
     const projectFiles = [
       { name: "Age Calculator", file: "age-calc.html", description: "A simple tool to calculate your age accurately." },
-      { name: "Timer", file: "timer.html", description: "A simple timer with fulscreen mode." },
+      { name: "Timer", file: "timer.html", description: "A simple timer with fullscreen mode." },
       { name: "BMI Calculator", file: "bmi-calc.html", description: "A simple BMI Calculator." },
-      // Add more projects here as new files are added
+      // More projects can be added here as needed
     ];
 
     // Dynamically add project cards
@@ -78,6 +91,13 @@
         </div>
       `;
       projectList.innerHTML += projectCard;
+    });
+
+    // Mobile menu toggle functionality
+    const menuButton = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
   </script>
 
