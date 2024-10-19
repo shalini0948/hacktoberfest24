@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-blue-500 to-teal-500 min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-6">BMI Calculator</h1>
+
+        <div class="input-group mb-4">
+            <label for="weight" class="block text-gray-700 font-semibold mb-2">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Enter weight" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+        </div>
+
+        <div class="input-group mb-4">
+            <label for="height" class="block text-gray-700 font-semibold mb-2">Height (cm):</label>
+            <input type="number" id="height" placeholder="Enter height" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+        </div>
+
+        <button id="calculate" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200">Calculate BMI</button>
+
+        <div id="result" class="mt-6 hidden">
+            <div class="flex justify-center items-center mb-4">
+                <p id="bmi" class="text-2xl font-bold text-gray-800"></p>
+            </div>
+
+            <div class="flex justify-between items-center mb-4">
+                <p id="interpretation" class="text-lg text-gray-700"></p>
+                <span id="bmi-icon" class="text-3xl"></span>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <p class="text-sm text-gray-600">BMI Range:</p>
+                <div id="bmi-chart" class="flex w-full h-4 rounded-full overflow-hidden">
+                    <div id="underweight-bar" class="bg-gray-300 w-1/4 h-full rounded-l-full"></div>
+                    <div id="normal-bar" class="bg-green-500 w-1/4 h-full"></div>
+                    <div id="overweight-bar" class="bg-yellow-500 w-1/4 h-full"></div>
+                    <div id="obese-bar" class="bg-red-500 w-1/4 h-full rounded-r-full"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const weightInput = document.getElementById('weight');
+        const heightInput = document.getElementById('height');
+        const calculateButton = document.getElementById('calculate');
+        const bmiDisplay = document.getElementById('bmi');
+        const interpretation = document.getElementById('interpretation');
+        const bmiIcon = document.getElementById('bmi-icon');
+        const bmiChart = document.getElementById('bmi-chart');
+        const chartBars = document.querySelectorAll('.chart-bar');
+
+        calculateButton.addEventListener('click', () => {
+            const weight = parseFloat(weightInput.value);
+            const height = parseFloat(heightInput.value) / 100; // Convert cm to meters
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                bmiDisplay.textContent = "Invalid Input";
+                interpretation.textContent = "";
+                bmiIcon.textContent = "";
+                bmiChart.classList.add('hidden');
+                return;
+            }
+
+            const bmi = weight / (height * height);
+            bmiDisplay.textContent = `Your BMI: ${bmi.toFixed(2)}`;
+
+            let interpretationText;
+            let activeBar;
+            let icon;
+
+            if (bmi < 18.5) {
+                interpretationText = "Underweight";
+                activeBar = 'underweight-bar';
+                icon = "😔";
+            } else if (bmi < 25) {
+                interpretationText = "Normal weight";
+                activeBar = 'normal-bar';
+                icon = "😊";
+            } else if (bmi < 30) {
+                interpretationText = "Overweight";
+                activeBar = 'overweight-bar';
+                icon = "🤨";
+            } else {
+                interpretationText = "Obese";
+                activeBar = 'obese-bar';
+                icon = "😥";
+            }
+
+            interpretation.textContent = interpretationText;
+            bmiIcon.textContent = icon;
+
+            // Highlight chart bar
+            chartBars.forEach(bar => bar.classList.remove('bg-gray-300'));
+            document.getElementById(activeBar).classList.add('bg-purple-600');
+
+            // Show result section
+            document.getElementById('result').classList.remove('hidden');
+            bmiChart.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
