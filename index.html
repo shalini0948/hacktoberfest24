@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Our Contributors' Projects - Hacktoberfest24</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-blue-600 text-white py-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <h1 class="text-2xl font-bold">Hacktoberfest24</h1>
+      <nav>
+        <a href="#projects" class="text-white hover:underline mx-4">Projects</a>
+        <a href="about.html" class="text-white hover:underline mx-4">About</a>
+        <a href="landing.html" class="text-white hover:underline mx-4">Landing</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-blue-500 text-white py-12">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold">Welcome to Hacktoberfest24</h2>
+      <p class="text-lg mt-4">Explore and contribute to open-source projects by our amazing community of developers.</p>
+      <a href="#projects" class="mt-6 inline-block bg-white text-blue-500 px-6 py-3 rounded-full shadow-md hover:bg-gray-200 transition">
+        Explore Projects
+      </a>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <main class="container mx-auto px-6 py-8" id="projects">
+    <h2 class="text-3xl font-semibold mb-6 text-center">Contributors' Projects</h2>
+    <div id="project-list" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Projects will be inserted here by JavaScript -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 mt-12">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Hacktoberfest24. All rights reserved.</p>
+      <nav class="mt-4">
+        <a href="README.md" class="text-gray-400 hover:text-white mx-2">README</a>
+        <a href="CONTRIBUTING.md" class="text-gray-400 hover:text-white mx-2">Contributing</a>
+        <a href="LICENSE" class="text-gray-400 hover:text-white mx-2">License</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Manually defined list of HTML files in the WebDev folder
+    const projectFiles = [
+      { name: "Age Calculator", file: "age-calc.html", description: "A simple tool to calculate your age accurately." },
+      // Add more projects here as new files are added
+    ];
+
+    // Dynamically add project cards
+    const projectList = document.getElementById('project-list');
+    projectFiles.forEach(project => {
+      const projectCard = `
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <h3 class="text-xl font-bold">${project.name}</h3>
+          <p class="text-gray-600 mt-2">${project.description}</p>
+          <a href="WebDev/${project.file}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-400 transition">
+            View Project
+          </a>
+        </div>
+      `;
+      projectList.innerHTML += projectCard;
+    });
+  </script>
+
+</body>
+</html>
