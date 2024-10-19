@@ -52,7 +52,7 @@ We encourage everyone to get involved! Whether it’s fixing bugs, improving doc
 4. **Make Changes**: Improve the project by adding features, fixing bugs, or improving the documentation.
 5. **Add Changes** :
     ```bas
-    git add ."
+    git add .
     ```
 6. **Commit Your Changes**:
     ```bash
